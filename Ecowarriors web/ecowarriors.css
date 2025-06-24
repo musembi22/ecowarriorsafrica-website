@@ -1,0 +1,830 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  background-color: #e0f5f0;
+}
+/* Navbar Styling */
+.navbar {
+  background-color: #1a3c34;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  text-align: right;
+  align-content: right;
+  justify-items: right;
+  justify-content: right;
+
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: right;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo Link */
+.logo-link {
+  display: flex;
+  align-items: left;
+  text-decoration: none;
+  max-height: 20px; /* Constrain the height of the logo */
+  height:20px; /* or whatever fits your header */ 
+}
+
+/* Logo Image */
+.nav-logo {
+  /* Constrain the height to your nav bar */
+  max-height: 10px;
+  height: 10px;      /* or whatever fits your header */
+  width: auto;       /* preserve aspect ratio */
+  margin-right: 0.5rem;
+  display:flex;  /* remove any inline-block whitespace quirks */
+  object-fit: contain; /* for good measure with SVG/PNG */
+  align-items: left;
+}
+
+/* Logo Text */
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  text-align: right ; /* Align links to the right */
+}
+
+.nav-links li {
+  list-style-type: none;
+}
+
+.nav-link {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #00b894;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+/* Responsive: shrink logo on mobile */
+@media (max-width: 30px) {
+  .nav-logo {
+    height: 32px;
+  }
+  .logo-text {
+    font-size: 1rem;
+  }
+  .nav-links {
+    gap: 1rem;
+  }
+}
+.hero-section {
+  position: relative;
+  background: url('/path/to/your-image.jpg') center/cover no-repeat;
+  height: 80vh;              /* whatever size you need */
+  overflow: hidden;
+}
+
+/* overlay */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4); /* black at 40% opacity → dims by 60% */
+  pointer-events: none;
+}
+
+/* make sure your content sits above the overlay */
+.hero-section > * {
+  position: relative;
+  z-index: 1;
+}
+#home {
+  position:relative;
+  height:150vh;
+  width: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+ background-image:url(  images/background.png); /* Use your image path */
+ background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+/* Make the particles div fill the section */
+  #tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;   
+}
+
+
+.overlay-content {
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: dark overlay */
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+#home::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('images/particles.gif'); /* or transparent SVG */
+  background-position: fixed;
+  
+  opacity: 0.3;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.home-content {
+  z-index: 1;
+  background: rgba(255,255,255,0.9);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #1a3c34;
+}
+.home-content button {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background-color: #019374;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.home-content button:hover {
+  transform: scale(1.1); /* Zooms by 10% */
+  background-color: #151a19; /* Darker shade on hover */
+}
+
+
+.overlay-content {
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: dark overlay */
+  padding: 2rem;
+  border-radius: 10px;
+}
+section {
+  
+  margin: auto;
+}
+#project {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #1a3c34;
+  margin-bottom: 2rem;
+}
+#gallery {
+  padding: 4rem 1rem;
+  background: #e8f5f2;
+  text-align: center;
+}
+#gallery .animated-heading {
+  font-size: 2.5rem;
+  color: #02332A;
+  margin-bottom: 2rem;
+  /* keep your existing animation here */
+}
+
+/* -------- Grid Layout -------- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+}
+
+/* -------- Items & Hover Effects -------- */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.3s ease;
+}
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+/* Image fills the container */
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+/* Caption overlay */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.75rem 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+.overlay span {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* -------- Responsive Tweaks -------- */
+@media (max-width: 600px) {
+  #gallery .animated-heading {
+    font-size: 2rem;
+  }
+}
+#team {
+  padding: 4rem 2rem;
+  background: #e0f5f0;
+  text-align: center;
+  background-color: #e0f5f0;
+}
+
+#team h2 {
+  font-size: 2.5rem;
+  color: #1a3c34;
+  margin-bottom: 2rem;
+}
+
+.team-slider {
+  position: relative;
+  overflow: hidden;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.team-track {
+  display: flex;
+  transition: transform 0.1s ease-in-out;
+}
+
+.team-card {
+  flex: 0 0 33.3333%;
+  box-sizing: border-box;
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  margin: 0 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.team-card img {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+button.prev,
+button.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #1a3c34;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  z-index: 10;
+  cursor: pointer;
+}
+
+button.prev { left: 10px; }
+button.next { right: 10px; }
+
+@media (max-width: 768px) {
+  .team-card { flex: 0 0 50%; }
+}
+@media (max-width: 480px) {
+  .team-card { flex: 0 0 100%; }
+}
+
+
+/* Social Media Buttons */
+.social-media {
+  margin-top: 1.5rem;
+}
+
+.social-media a {
+  display: inline-block;
+  margin: 0.3rem;
+  padding: 10px 18px;
+  background-color: #1a3c34;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+
+.social-media a:hover {
+  background-color: #007f5f;
+  transform: scale(1.05);
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  #contact h2 {
+    font-size: 2rem;
+  }
+
+  .social-media a {
+    display: block;
+    margin: 0.5rem auto;
+    width: 80%;
+  }
+}
+
+footer {
+  background: #1a3c34;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+.lively-heading {
+  font-size: 2.5rem;
+  color: #1a3c34;
+  animation: fadeInSlide 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInSlide {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+animated-heading {
+  position: relative;
+  display: inline-block;
+  font-size: 2.5rem;
+  color: #1a3c34;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  margin-bottom: 1rem;
+}
+
+/* Underline */
+.animated-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #00b894;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s ease;
+}
+
+/* When visible */
+.animated-heading.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animated-heading.visible::after {
+  transform: scaleX(1);
+}
+/* styles.css */
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.site-footer {
+  background-color: #002e3b;
+  color: #fff;
+}
+
+/* Top section */
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.footer-logo img {
+  height: 40px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+}
+
+.footer-links h3,
+.footer-partners h3 {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+  color: #0a68c0;
+  
+}
+
+.footer-links li {
+  margin-bottom: 0.25rem;
+}
+
+.footer-partners .partners-list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-partners img {
+  height: 40px;
+  background: #fff;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+/* Divider */
+.site-footer hr {
+  border: none;
+  border-top: 1px solid #1f3a44;
+  margin: 0;
+}
+
+/* Bottom bar */
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: #ccc;
+}
+
+.social-follow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-follow img {
+  height: 20px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .footer-top,
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-links,
+  .footer-partners {
+    margin-top: 1rem;
+  }
+}
+/* --------------- About Section Setup --------------- */
+#about {
+  background: url('path/to/your-bg.jpg') center/cover no-repeat;
+  padding: 4rem 1rem;
+  color: #02332A;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.about-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.animated-heading {
+  font-size: 2.75rem;
+  margin-bottom: 2.5rem;
+  color: #02332A;
+  /* your existing animation here */
+}
+
+/* Card layout */
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  
+}
+
+/* Individual card */
+.about-card {
+  background: rgba(255,255,255,0.9);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.about-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 12px 32px  #019374;
+  
+}
+
+/* Card header */
+.about-card h3 {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.about-card .icon {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+/* Card body text */
+.about-card p {
+  line-height: 1.6;
+  color: #04514A;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .animated-heading {
+    font-size: 2.25rem;
+  }
+  .about-card {
+    padding: 1.5rem 1rem;
+  }
+}
+/* ---------------team  Section Setup --------------- */
+#team {
+  position: relative;
+  padding: 4rem 1rem;
+  background: #f9faf9;
+  overflow: hidden;
+}
+#teamParticles { /* if you have a particle canvas here */ 
+  position: absolute; inset: 0; z-index: 1;
+}
+
+/* Centered content */
+#team .container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Heading */
+#team h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #02332A;
+}
+
+/* ---------------Team slider layout --------------- */
+.team-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.team-track {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  gap: 1rem;
+  padding: 0 2rem; /* space for arrows */
+  scroll-behavior: smooth;
+}
+
+/* Hide native scrollbar */
+.team-track::-webkit-scrollbar { display: none; }
+.team-track { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* --------------- Card Styles --------------- */
+.team-card {
+  scroll-snap-align: center;
+  flex: 0 0 260px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: transform .2s;
+}
+.team-card:hover {
+  transform: translateY(-20px);
+}
+
+/* Avatar */
+.team-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+/* Name & Title */
+.team-card h3 {
+  margin: 0.5rem 0 0.25rem;
+  font-size: 1.25rem;
+  color: #02332A;
+}
+.team-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #04514A;
+}
+
+/* Social Icons */
+.team-card .social {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.team-card .social img {
+  width: 20px; height: 20px;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+.team-card .social img:hover {
+  opacity: 1;
+}
+
+/* --------------- Arrows --------------- */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  background: #02332A;
+  color: #fff;
+  border: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background .2s;
+}
+.arrow:hover {
+  background: #000000;
+}
+.arrow.prev { left: 0; }
+.arrow.next { right: 0; }
+
+/* --------------- Responsive --------------- */
+@media (max-width: 768px) {
+  #team h2 { font-size: 2rem; }
+  .team-card { flex: 0 0 200px; }
+  .arrow { width: 2.5rem; height: 2.5rem; font-size: 1.2rem; }
+}
+/* CTA wrapper */
+.about-cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* Learn-More button */
+.btn-link {
+  /* remove any button defaults */
+  display: inline-block;
+  background: none;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+
+  /* typography */
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 1.125rem;       /* ~18px */
+  line-height: 1;
+  color: #264713;            /* a soft gold */
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.btn-link::after {
+  content: "→";
+  margin-left: 0.25rem;
+  transition: margin-left 0.2s ease;
+}
+
+/* Hover state */
+.btn-link:hover {
+  color: #51a77c;            /* a slightly deeper gold */
+}
+
+.btn-link:hover::after {
+  margin-left: 0.5rem;
+}
+
+/* Mobile tweak: full-width button up to a max */
+@media (max-width: 600px) {
+  .btn-learn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+/* 1. Define the dance keyframes */
+@keyframes dance {
+  0%, 100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  20% {
+    transform: translateY(-4px) scale(1.05) rotate(-2deg);
+  }
+  40% {
+    transform: translateY(2px) scale(0.98) rotate(2deg);
+  }
+  60% {
+    transform: translateY(-2px) scale(1.02) rotate(-1deg);
+  }
+  80% {
+    transform: translateY(3px) scale(0.97) rotate(1deg);
+  }
+}
+
+/* 2. Apply the animation to the button */
+.btn-primary.dance {
+  animation: dance 2s ease-in-out infinite;
+  /* ensure 3D GPU acceleration for smoothness */
+  transform-origin: center bottom;
+  backface-visibility: hidden;
+}
